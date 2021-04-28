@@ -1,13 +1,14 @@
-﻿using BlinkID.Forms.Droid.Recognizers;
-using BlinkID.Forms.Core.Recognizers;
+﻿using BlinkCard.Forms.Droid.Recognizers;
+using BlinkCard.Forms.Core.Recognizers;
 
-namespace BlinkID.Forms.Droid.Recognizers
+[assembly: Xamarin.Forms.Dependency(typeof(ImageExtensionFactorsFactory))]
+namespace BlinkCard.Forms.Droid.Recognizers
 {
     public sealed class Date : IDate
     {
-        Com.Microblink.Results.Date.Date nativeDate;
+        Com.Microblink.Blinkcard.Results.Date.Date nativeDate;
 
-        public Date(Com.Microblink.Results.Date.Date nativeDate)
+        public Date(Com.Microblink.Blinkcard.Results.Date.Date nativeDate)
         {
             this.nativeDate = nativeDate;
         }
@@ -21,9 +22,9 @@ namespace BlinkID.Forms.Droid.Recognizers
 
     public sealed class Point : IPoint
     {
-        Com.Microblink.Geometry.Point nativePoint;
+        Com.Microblink.Blinkcard.Geometry.Point nativePoint;
 
-        public Point(Com.Microblink.Geometry.Point nativePoint)
+        public Point(Com.Microblink.Blinkcard.Geometry.Point nativePoint)
         {
             this.nativePoint = nativePoint;
         }
@@ -34,9 +35,9 @@ namespace BlinkID.Forms.Droid.Recognizers
 
     public sealed class Quadrilateral : IQuadrilateral
     {
-        Com.Microblink.Geometry.Quadrilateral nativeQuad;
+        Com.Microblink.Blinkcard.Geometry.Quadrilateral nativeQuad;
 
-        public Quadrilateral(Com.Microblink.Geometry.Quadrilateral nativeQuad)
+        public Quadrilateral(Com.Microblink.Blinkcard.Geometry.Quadrilateral nativeQuad)
         {
             this.nativeQuad = nativeQuad;
         }
@@ -45,5 +46,28 @@ namespace BlinkID.Forms.Droid.Recognizers
         public IPoint UpperRight { get => new Point(nativeQuad.UpperRight); }
         public IPoint LowerLeft { get => new Point(nativeQuad.LowerLeft); }
         public IPoint LowerRight { get => new Point(nativeQuad.LowerRight); }
+    }
+
+    public sealed class ImageExtensionFactors : IImageExtensionFactors
+    {
+        public Com.Microblink.Blinkcard.Entities.Recognizers.Blinkid.Imageoptions.Extension.ImageExtensionFactors NativeImageExtensionFactors { get; }
+
+        public ImageExtensionFactors(Com.Microblink.Blinkcard.Entities.Recognizers.Blinkid.Imageoptions.Extension.ImageExtensionFactors nativeExtentionFactors)
+        {
+            NativeImageExtensionFactors = nativeExtentionFactors;
+        }
+
+        public float UpFactor => NativeImageExtensionFactors.UpFactor;
+        public float RightFactor => NativeImageExtensionFactors.RightFactor;
+        public float DownFactor => NativeImageExtensionFactors.DownFactor;
+        public float LeftFactor => NativeImageExtensionFactors.LeftFactor;
+    }
+
+    public sealed class ImageExtensionFactorsFactory : IImageExtensionFactorsFactory
+    {
+        public IImageExtensionFactors CreateImageExtensionFactors(float upFactor = 0, float downFactor = 0, float leftFactor = 0, float rightFactor = 0)
+        {
+            return new ImageExtensionFactors(new Com.Microblink.Blinkcard.Entities.Recognizers.Blinkid.Imageoptions.Extension.ImageExtensionFactors(upFactor, downFactor, leftFactor, rightFactor));
+        }
     }
 }

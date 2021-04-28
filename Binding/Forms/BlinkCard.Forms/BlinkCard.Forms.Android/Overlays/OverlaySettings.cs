@@ -1,13 +1,13 @@
 ﻿
-using BlinkID.Forms.Droid.Overlays;
-using BlinkID.Forms.Core.Overlays;
-using BlinkID.Forms.Core.Recognizers;
-using BlinkID.Forms.Droid;
-using Com.Microblink.Uisettings;
-using Com.Microblink.Uisettings.Options;
-using Com.Microblink.Hardware.Camera;
+using BlinkCard.Forms.Droid.Overlays;
+using BlinkCard.Forms.Core.Overlays;
+using BlinkCard.Forms.Core.Recognizers;
+using BlinkCard.Forms.Droid;
+using Com.Microblink.Blinkcard.Uisettings;
+using Com.Microblink.Blinkcard.Uisettings.Options;
+using Com.Microblink.Blinkcard.Hardware.Camera;
 
-namespace BlinkID.Forms.Droid.Overlays
+namespace BlinkCard.Forms.Droid.Overlays
 {
     public abstract class OverlaySettings : IOverlaySettings, IScanSoundOverlaySettings
     {

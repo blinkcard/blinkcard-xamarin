@@ -1,10 +1,10 @@
 ﻿
-using BlinkID.Forms.Droid.Overlays;
-using BlinkID.Forms.Core.Overlays;
-using BlinkID.Forms.Core.Recognizers;
-using Com.Microblink.Uisettings;
+using BlinkCard.Forms.Droid.Overlays;
+using BlinkCard.Forms.Core.Overlays;
+using BlinkCard.Forms.Core.Recognizers;
+using Com.Microblink.Blinkcard.Uisettings;
 
-namespace BlinkID.Forms.Droid.Overlays
+namespace BlinkCard.Forms.Droid.Overlays
 {
     public abstract class RecognizerCollectionOverlaySettings : OverlaySettings
     {

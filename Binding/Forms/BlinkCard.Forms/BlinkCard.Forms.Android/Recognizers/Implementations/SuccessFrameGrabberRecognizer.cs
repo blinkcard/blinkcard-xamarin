@@ -1,22 +1,22 @@
-﻿using BlinkID.Forms.Core.Recognizers;
-using BlinkID.Forms.Droid.Recognizers;
+﻿using BlinkCard.Forms.Core.Recognizers;
+using BlinkCard.Forms.Droid.Recognizers;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(SuccessFrameGrabberRecognizerFactory))]
-namespace BlinkID.Forms.Droid.Recognizers
+namespace BlinkCard.Forms.Droid.Recognizers
 {
     public sealed class SuccessFrameGrabberRecognizer : Recognizer, ISuccessFrameGrabberRecognizer
     {
-        Com.Microblink.Entities.Recognizers.Successframe.SuccessFrameGrabberRecognizer nativeRecognizer;
+        Com.Microblink.Blinkcard.Entities.Recognizers.Successframe.SuccessFrameGrabberRecognizer nativeRecognizer;
         Recognizer slaveRecognizer;
         SuccessFrameGrabberRecognizerResult result;
 
         public SuccessFrameGrabberRecognizer(Recognizer slaveRecognizer)
-            : base(new Com.Microblink.Entities.Recognizers.Successframe.SuccessFrameGrabberRecognizer(slaveRecognizer.NativeRecognizer))
+            : base(new Com.Microblink.Blinkcard.Entities.Recognizers.Successframe.SuccessFrameGrabberRecognizer(slaveRecognizer.NativeRecognizer))
         {
-            nativeRecognizer = NativeRecognizer as Com.Microblink.Entities.Recognizers.Successframe.SuccessFrameGrabberRecognizer;
+            nativeRecognizer = NativeRecognizer as Com.Microblink.Blinkcard.Entities.Recognizers.Successframe.SuccessFrameGrabberRecognizer;
             this.slaveRecognizer = slaveRecognizer;
-            result = new SuccessFrameGrabberRecognizerResult(nativeRecognizer.GetResult() as Com.Microblink.Entities.Recognizers.Successframe.SuccessFrameGrabberRecognizer.Result);
+            result = new SuccessFrameGrabberRecognizerResult(nativeRecognizer.GetResult() as Com.Microblink.Blinkcard.Entities.Recognizers.Successframe.SuccessFrameGrabberRecognizer.Result);
         }
 
         public IRecognizer SlaveRecognizer => slaveRecognizer;
@@ -28,9 +28,9 @@ namespace BlinkID.Forms.Droid.Recognizers
 
     public sealed class SuccessFrameGrabberRecognizerResult : RecognizerResult, ISuccessFrameGrabberRecognizerResult
     {
-        Com.Microblink.Entities.Recognizers.Successframe.SuccessFrameGrabberRecognizer.Result nativeResult;
+        Com.Microblink.Blinkcard.Entities.Recognizers.Successframe.SuccessFrameGrabberRecognizer.Result nativeResult;
 
-        internal SuccessFrameGrabberRecognizerResult(Com.Microblink.Entities.Recognizers.Successframe.SuccessFrameGrabberRecognizer.Result nativeResult) : base(nativeResult)
+        internal SuccessFrameGrabberRecognizerResult(Com.Microblink.Blinkcard.Entities.Recognizers.Successframe.SuccessFrameGrabberRecognizer.Result nativeResult) : base(nativeResult)
         {
             this.nativeResult = nativeResult;
         }

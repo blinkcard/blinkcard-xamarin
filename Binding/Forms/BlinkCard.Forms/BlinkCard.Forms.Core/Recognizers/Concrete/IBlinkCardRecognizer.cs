@@ -1,109 +1,83 @@
 ﻿namespace BlinkCard.Forms.Core.Recognizers
 {
     /// <summary>
-    /// Recognizer used for scanning credit/debit cards.
+    /// Recognizer used for scanning both sides of payment cards.
     /// </summary>
     public interface IBlinkCardRecognizer : IRecognizer
     {
         
         /// <summary>
-        /// Defines whether blured frames filtering is allowed
-        /// 
-        ///  
+        /// Whether blured frames filtering is allowed. 
         ///
         /// By default, this is set to 'true'
         /// </summary>
         bool AllowBlurFilter { get; set; }
         
         /// <summary>
-        /// Defines whether sensitive data should be redacted from the result.
-        /// 
-        ///  
+        /// The settings which control the anonymization of returned data. 
         ///
-        /// By default, this is set to 'See MBCBlinkCardAnonymizationSettings for default settings'
+        /// By default, this is set to '[0, 0, 0, 0, 0, 0, 0]'
         /// </summary>
         IBlinkCardAnonymizationSettings AnonymizationSettings { get; set; }
         
         /// <summary>
-        /// Should extract CVV
-        /// 
-        ///  
+        /// Should extract the card CVV 
         ///
         /// By default, this is set to 'true'
         /// </summary>
         bool ExtractCvv { get; set; }
         
         /// <summary>
-        /// Should extract the payment card's month of expiry
-        /// 
-        ///  
+        /// Should extract the payment card's expiry date. 
         ///
         /// By default, this is set to 'true'
         /// </summary>
         bool ExtractExpiryDate { get; set; }
         
         /// <summary>
-        /// Should extract the payment card's IBAN
-        /// 
-        ///  
+        /// Should extract the card IBAN 
         ///
         /// By default, this is set to 'true'
         /// </summary>
         bool ExtractIban { get; set; }
         
         /// <summary>
-        /// Should extract the card owner information
-        /// 
-        ///  
+        /// Should extract the card owner information 
         ///
         /// By default, this is set to 'true'
         /// </summary>
         bool ExtractOwner { get; set; }
         
         /// <summary>
-        /// Property for setting DPI for full document images
-        /// Valid ranges are [100,400]. Setting DPI out of valid ranges throws an exception
-        /// 
-        ///  
+        /// The DPI (Dots Per Inch) for full document image that should be returned. 
         ///
         /// By default, this is set to '250'
         /// </summary>
         int FullDocumentImageDpi { get; set; }
         
         /// <summary>
-        /// Image extension factors for full document image.
-        /// 
-        /// @see CImageExtensionFactors
-        ///  
+        /// The extension factors for full document image. 
         ///
-        /// By default, this is set to '{0.0f, 0.0f, 0.0f, 0.0f}'
+        /// By default, this is set to '[0.0, 0.0, 0.0, 0.0]'
         /// </summary>
         IImageExtensionFactors FullDocumentImageExtensionFactors { get; set; }
         
         /// <summary>
-        /// Pading is a minimum distance from the edge of the frame and is defined as a percentage of the frame width. Default value is 0.0f and in that case
-        /// padding edge and image edge are the same.
-        /// Recommended value is 0.02f.
-        /// 
-        ///  
+        /// Padding is a minimum distance from the edge of the frame and it is defined as a percentage 
         ///
-        /// By default, this is set to '0.0f'
+        /// By default, this is set to '0.0'
         /// </summary>
         float PaddingEdge { get; set; }
         
         /// <summary>
-        /// Sets whether full document image of ID card should be extracted.
-        /// 
-        ///  
+        /// Defines whether full document image will be available in 
         ///
         /// By default, this is set to 'false'
         /// </summary>
         bool ReturnFullDocumentImage { get; set; }
         
         /// <summary>
-        /// Whether or not recognition result should be signed.
-        /// 
-        ///  
+        /// Defines whether or not recognition result should be signed. 
         ///
         /// By default, this is set to 'false'
         /// </summary>
@@ -132,22 +106,22 @@
         string CardNumberPrefix { get; }
         
         /// <summary>
-        /// The payment card number is valid 
+        /// Flag which indicatew whether the payment card number is valid or not. 
         /// </summary>
         bool CardNumberValid { get; }
         
         /// <summary>
-        ///  Payment card's security code/value. 
+        /// Payment card's security code/value. 
         /// </summary>
         string Cvv { get; }
         
         /// <summary>
-        /// Digital signature of the recognition result. Available only if enabled with signResult property. 
+        /// Defines digital signature of recognition results. 
         /// </summary>
         byte[] DigitalSignature { get; }
         
         /// <summary>
-        /// Version of the digital signature. Available only if enabled with signResult property. 
+        /// Defines digital signature version. 
         /// </summary>
         int DigitalSignatureVersion { get; }
         
@@ -157,7 +131,7 @@
         IDate ExpiryDate { get; }
         
         /// <summary>
-        /// Wheater the first scanned side is blurred. 
+        /// Whether the first scanned side is blurred. 
         /// </summary>
         bool FirstSideBlurred { get; }
         
@@ -177,7 +151,7 @@
         Issuer Issuer { get; }
         
         /// <summary>
-        /// Information about the payment card owner (name, company, etc.). 
+        /// Information about the payment card owner. 
         /// </summary>
         string Owner { get; }
         
@@ -187,13 +161,12 @@
         BlinkCardProcessingStatus ProcessingStatus { get; }
         
         /// <summary>
-        /// Returns true if recognizer has finished scanning first side and is now scanning back side,
-        /// false if it's still scanning first side. 
+        /// {true} if recognizer has finished scanning first side and is now scanning back side, 
         /// </summary>
         bool ScanningFirstSideDone { get; }
         
         /// <summary>
-        /// Wheater the second scanned side is blurred. 
+        /// Whether the second scanned side is blurred. 
         /// </summary>
         bool SecondSideBlurred { get; }
         

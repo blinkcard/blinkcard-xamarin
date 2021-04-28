@@ -205,26 +205,17 @@ https://github.com/BlinkCard/blinkcard-android/releases/tag/v2.2.0</PackageRelea
     <Compile Include="MicroblinkScannerImplementation.cs" />
     <Compile Include="Overlays/OverlaySettings.cs" />
     <Compile Include="Overlays/RecognizerCollectionOverlaySettings.cs" />
-    <Compile Include="Overlays/Implementations/BlinkIdOverlaySettings.cs" />
-    <Compile Include="Overlays/Implementations/DocumentOverlaySettings.cs" />
-    <Compile Include="Overlays/Implementations/DocumentVerificationOverlaySettings.cs" />
+    <Compile Include="Overlays/Implementations/BlinkCardOverlaySettings.cs" />
     <Compile Include="Resources/Resource.designer.cs" />
     <Compile Include="Properties/AssemblyInfo.cs" />
     <Compile Include="Recognizers/Recognizer.cs" />
     <Compile Include="Recognizers/RecognizerCollection.cs" />
     <Compile Include="Recognizers/Utils.cs" />
-    <Compile Include="Recognizers/Types/BlinkIDTypes.cs" />
+    <Compile Include="Recognizers/Types/BlinkCardTypes.cs" />
     <Compile Include="Recognizers/Types/CommonTypes.cs" />
-    <Compile Include="Recognizers/Implementations/VisaRecognizer.cs" />
-    <Compile Include="Recognizers/Implementations/MrtdCombinedRecognizer.cs" />
-    <Compile Include="Recognizers/Implementations/MrtdRecognizer.cs" />
-    <Compile Include="Recognizers/Implementations/PassportRecognizer.cs" />
-    <Compile Include="Recognizers/Implementations/BlinkIdCombinedRecognizer.cs" />
-    <Compile Include="Recognizers/Implementations/IdBarcodeRecognizer.cs" />
-    <Compile Include="Recognizers/Implementations/UsdlCombinedRecognizer.cs" />
-    <Compile Include="Recognizers/Implementations/UsdlRecognizer.cs" />
-    <Compile Include="Recognizers/Implementations/DocumentFaceRecognizer.cs" />
-    <Compile Include="Recognizers/Implementations/BlinkIdRecognizer.cs" />
+    <Compile Include="Recognizers/Implementations/LegacyBlinkCardEliteRecognizer.cs" />
+    <Compile Include="Recognizers/Implementations/LegacyBlinkCardRecognizer.cs" />
+    <Compile Include="Recognizers/Implementations/BlinkCardRecognizer.cs" />
     <Compile Include="Recognizers/Implementations/SuccessFrameGrabberRecognizer.cs" />
   </ItemGroup>
   <ItemGroup>

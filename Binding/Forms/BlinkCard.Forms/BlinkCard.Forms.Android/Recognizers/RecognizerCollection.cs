@@ -1,9 +1,9 @@
-﻿using BlinkID.Forms.Droid.Recognizers;
-using BlinkID.Forms.Core.Recognizers;
-using Com.Microblink.Entities.Recognizers;
+﻿using BlinkCard.Forms.Droid.Recognizers;
+using BlinkCard.Forms.Core.Recognizers;
+using Com.Microblink.Blinkcard.Entities.Recognizers;
 
 [assembly: Xamarin.Forms.Dependency(typeof(RecognizerCollectionFactory))]
-namespace BlinkID.Forms.Droid.Recognizers
+namespace BlinkCard.Forms.Droid.Recognizers
 {
     public class RecognizerCollection : IRecognizerCollection
     {
@@ -14,7 +14,7 @@ namespace BlinkID.Forms.Droid.Recognizers
         public RecognizerCollection(IRecognizer[] recognizers)
         {
             this.recognizers = recognizers;
-            Com.Microblink.Entities.Recognizers.Recognizer[] nativeRecognizers = new Com.Microblink.Entities.Recognizers.Recognizer[recognizers.Length];
+            Com.Microblink.Blinkcard.Entities.Recognizers.Recognizer[] nativeRecognizers = new Com.Microblink.Blinkcard.Entities.Recognizers.Recognizer[recognizers.Length];
             for (int i = 0; i < recognizers.Length; ++i)
             {
                 nativeRecognizers[i] = ((Recognizer)recognizers[i]).NativeRecognizer;

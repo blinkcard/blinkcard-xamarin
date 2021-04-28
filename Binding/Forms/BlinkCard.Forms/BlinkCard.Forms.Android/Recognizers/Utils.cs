@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using Android.Graphics;
 using Xamarin.Forms;
-namespace BlinkID.Forms.Droid.Recognizers
+namespace BlinkCard.Forms.Droid.Recognizers
 {
     public abstract class Utils
     {
