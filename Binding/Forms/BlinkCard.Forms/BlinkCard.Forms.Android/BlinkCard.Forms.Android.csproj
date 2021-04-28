@@ -17,18 +17,18 @@
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
     <PackageId>BlinkCard.Forms.Android</PackageId>
-    <PackageVersion>2.2.0</PackageVersion>
+    <PackageVersion>2.3.0</PackageVersion>
     <Authors>Microblink</Authors>
     <Owners>Microblink</Owners>
     <PackageProjectUrl>https://github.com/BlinkCard/blinkcard-xamarin</PackageProjectUrl>
-    <Summary>A small, but powerful ID scanning library - Android implementation for Xamarin Forms.</Summary>
+    <Summary>AI-driven credit card scanning library - Android implementation for Xamarin Forms.</Summary>
     <Title>BlinkCard</Title>
-    <Description>A small, but powerful credit card scanning library - Android implementation for Xamarin Forms.</Description>
+    <Description>AI-driven credit card scanning library - Android implementation for Xamarin Forms.</Description>
     <ReleaseVersion>4.0.0</ReleaseVersion>
     <PackOnBuild>true</PackOnBuild>
-    <PackageReleaseNotes>Updated for BlinkCard Android SDK v2.2.0
+    <PackageReleaseNotes>Updated for BlinkCard Android SDK v2.3.0
 
-https://github.com/BlinkCard/blinkcard-android/releases/tag/v2.2.0</PackageReleaseNotes>
+https://github.com/BlinkCard/blinkcard-android/releases/tag/v2.3.0</PackageReleaseNotes>
     <!-- Workaround for build error  -->
     <DesignTimeBuild>false</DesignTimeBuild>
   </PropertyGroup>

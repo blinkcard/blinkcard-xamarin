@@ -11,16 +11,16 @@
     <AssemblyName>iOSBinding</AssemblyName>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <PackageId>BlinkCard.iOS.Binding</PackageId>
-    <PackageVersion>2.2.0</PackageVersion>
+    <PackageVersion>2.3.0</PackageVersion>
     <Authors>Microblink</Authors>
     <Owners>Microblink</Owners>
     <PackageProjectUrl>https://github.com/BlinkCard/blinkcard-xamarin</PackageProjectUrl>
-    <PackageReleaseNotes>Updated for BlinkCard iOS SDK v2.2.0:
+    <PackageReleaseNotes>Updated for BlinkCard iOS SDK v2.3.0:
 
-https://github.com/blinkcard-ios/releases/tag/v2.2.0</PackageReleaseNotes>
-    <Summary>A small, but powerfull credit card scanning library - native iOS SDK binding package.</Summary>
+https://github.com/blinkcard-ios/releases/tag/v2.3.0</PackageReleaseNotes>
+    <Summary>AI-driven credit card scanning library - native iOS SDK binding package.</Summary>
     <Title>BlinkCard</Title>
-    <Description>A small, but powerfull ID scanning library - native iOS SDK binding package.</Description>
+    <Description>AI-driven credit card scanning library - native iOS SDK binding package.</Description>
     <ReleaseVersion>4.0.0</ReleaseVersion>
     <PackOnBuild>true</PackOnBuild>
   </PropertyGroup>

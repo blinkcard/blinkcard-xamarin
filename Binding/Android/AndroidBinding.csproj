@@ -16,16 +16,16 @@
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
     <AndroidClassParser>class-parse</AndroidClassParser>
     <PackageId>BlinkCard.Android.Binding</PackageId>
-    <PackageVersion>5.11.0</PackageVersion>
+    <PackageVersion>2.3.0</PackageVersion>
     <Authors>Microblink</Authors>
     <Owners>Microblink</Owners>
     <PackageProjectUrl>https://github.com/BlinkCard/blinkcard-xamarin</PackageProjectUrl>
-    <PackageReleaseNotes>Updated to BlinkCard Android SDK v2.2.0
+    <PackageReleaseNotes>Updated to BlinkCard Android SDK v2.3.0
 
-https://github.com/BlinkCard/blinkcard-android/releases/tag/v2.2.0</PackageReleaseNotes>
-    <Summary>A small, but powerful ID scanning library - native Android SDK binding package.</Summary>
+https://github.com/BlinkCard/blinkcard-android/releases/tag/v2.3.0</PackageReleaseNotes>
+    <Summary>AI-driven credit card scanning library - native Android SDK binding package.</Summary>
     <Title>BlinkCard</Title>
-    <Description>A small, but powerful credit card scanning library - native Android SDK binding package.</Description>
+    <Description>AI-driven credit card scanning library - native Android SDK binding package.</Description>
     <PackOnBuild>true</PackOnBuild>
     <ReleaseVersion>4.0.0</ReleaseVersion>
   </PropertyGroup>
