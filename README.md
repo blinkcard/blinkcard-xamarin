@@ -123,23 +123,3 @@ If you do not wish to use BlinkCard NuGet packages, you can directly reference b
 4. Right-click on `BlinkCard.Forms.NuGet` project and select `Create NuGet package`
     - all projects will be built and their respective NuGet packages will be created in their `bin/Release` folder
 5. Upload packages to [NuGet](https://www.nuget.org/)
-
-## Android custom integration
-
-This section describes how to create your scan activity with BlinkCard SDK, natively in Android and wrap it to Xamarin. For that purpose, we have prepared [AndroidCustomUI](./Samples/AndroidCustomUI) sample.
-
-Steps to wrap custom functionality to Xamarin:
-
-1. Implement it natively for Android - create Android library:
-    - make sure that you are not using any resources from the BlinkCard Android SDK in resource files inside your library, otherwise, you will get compile errors while generating Xamarin bindings from Android library
-    - we have created [BlinkCardWrapper](./Samples/AndroidCustomUI/BindingSource/BlinkCardWrapper) Android Studio project which contains [LibBlinkCardWrapper](./Samples/AndroidCustomUI/BindingSource/BlinkCardWrapper/LibBlinkCardWrapper) Android library module with custom scan activity
-2. Build .aar archive from the library module:
-    - we have built `LibBlinkCardWrapper-release.aar` from our Android library module
-3. Create a new Xamarin Bindings Library for Android:
-    - add a dependency to `BlinkCard.Android.Binding` nuget package
-    - add `.aar` to `Jars` folder and set the *Build Action* for `.aar` to *LibraryProjectZip*
-    - we have prepared [CustomUIBinding](./Samples/AndroidCustomUI/CustomUISample/CustomUIBinding) project inside [CustomUISample](./Samples/AndroidCustomUI/CustomUISample) solution
-4. You can use the Bindings Library in the application project:
-    - first, add a reference to the created Bindings Library
-    - add a dependency to `BlinkCard.Android.Binding`
-    - we have prepared sample application project [CustomUIApp](./Samples/AndroidCustomUI/CustomUISample/CustomUIApp) inside [CustomUISample](./Samples/AndroidCustomUI/CustomUISample) solution
