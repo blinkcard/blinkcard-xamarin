@@ -22,11 +22,15 @@ namespace BlinkCard.Forms.iOS
             MBCMicroblinkSDK.SharedInstance().ShowTrialLicenseWarning = showTrialLicenseWarning;
             if (licensee == null)
             {
-                MBCMicroblinkSDK.SharedInstance().SetLicenseKey(licenseKey, null);
+                MBCMicroblinkSDK.SharedInstance().SetLicenseKey(licenseKey, (licenseError) => {
+                    // here, you can check license error
+                });
             }
             else
             {
-                MBCMicroblinkSDK.SharedInstance().SetLicenseKey(licenseKey, licensee, null);
+                MBCMicroblinkSDK.SharedInstance().SetLicenseKey(licenseKey, licensee, (licenseError) => {
+                    // here, you can check license error
+                });
             }
         }
 
