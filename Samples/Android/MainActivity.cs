@@ -12,6 +12,7 @@ using Com.Microblink.Blinkcard.Intent;
 using Com.Microblink.Blinkcard.Uisettings;
 using Android.Runtime;
 using Com.Microblink.Blinkcard.Entities.Recognizers.Blinkcard;
+using Com.Microblink.Blinkcard.Results.Date;
 
 namespace Android
 {
@@ -99,22 +100,13 @@ namespace Android
                 if (blinkCardResult.ResultState == Recognizer.Result.State.Valid)
                 {
                     message += "BlinkCard recognizer result:\n" +
-                        "Issuer: " + blinkCardResult.Issuer.Name() + "\n" +
-                        "CardNumber: " + blinkCardResult.CardNumber + "\n" +
-                        "CardNumberValid: " + blinkCardResult.IsCardNumberValid + "\n" +
-                        "CardNumberPrefix: " + blinkCardResult.CardNumberPrefix + "\n" +
-                        "CVV: " + blinkCardResult.Cvv + "\n" +
-                        "IBAN: " + blinkCardResult.Iban + "\n";
-                    var doe = blinkCardResult.ExpiryDate.Date;
-                    if (doe != null)
-                    {
-                        message +=
-                            "DateOfExpiry: " + doe.Day + "." +
-                                               doe.Month + "." +
-                                               doe.Year + ".\n";
-
-                    }
-                    // there are other fields to extract
+                        BuildResult(blinkCardResult.Issuer.Name(), "Issuer") +
+                        BuildResult(blinkCardResult.CardNumber, "CardNumber") +
+                        BuildResult(blinkCardResult.IsCardNumberValid, "CardNumberValid") +
+                        BuildResult(blinkCardResult.CardNumberPrefix, "CardNumberPrefix") +
+                        BuildResult(blinkCardResult.Cvv, "CVV") +
+                        BuildResult(blinkCardResult.Iban, "IBAN") +
+                        BuildResult(blinkCardResult.ExpiryDate.Date, "DateOfExpiry");
 
                     // show full document images
                     if (blinkCardResult.FirstSideFullDocumentImage != null)
@@ -143,6 +135,36 @@ namespace Android
                 alert.Show();
             }
         }
+
+        private string BuildResult(string result, string propertyName)
+        {
+            if (result == null || result.Length == 0)
+            {
+                return "";
+            }
+
+            return propertyName + ": " + result + "\n";
+        }
+
+        private string BuildResult(bool result, string propertyName)
+        {
+            if (result)
+            {
+                return propertyName + ": YES" + "\n";
+            }
+
+            return propertyName + ": NO" + "\n";
+        }
+
+        private string BuildResult(Date result, string propertyName)
+        {
+            if (result == null || result.Year == 0)
+            {
+                return "";
+            }
+            return propertyName + ": " + result.Year.ToString() + "/" + result.Month.ToString("D2") + "\n";
+        }
+
     }
 }
 
