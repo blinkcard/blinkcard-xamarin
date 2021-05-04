@@ -40,7 +40,7 @@ namespace BlinkCardApp
             }
             else
             {
-                licenseKey = "sRwAAAAVY29tLm1pY3JvYmxpbmsuc2FtcGxlU9kJdZhZkGlTu9U3ORtGZDC+pgWPewByA2mcAQzqNk16/kWSp2nLRQjfkEuG9yGoE/K0LrodsEN7Al0N7WPru283evPr/SeAo6r28d9ctFxOdHMT/FZIbSE5cEhVCXABiq9jHegOrfRcCpHF2C2yyiqnzFkP2vYDvfkmVJaGssG3isYCB57Oz3HSW5DkORMbQjkFtiHIZvcUZGRMMBkeT1TmK1YwVz85q6XMgC3+QMLOhpbNsYZg2DsO1kgC6PcTmkdwweXNoXJw+9i7gfKw7M/4u3LCcXCoPpBilJJND+BW+Qr9L+zDj2t8WnxCOa5yAUiED9QlTss086BIkmxov3Fs";
+                licenseKey = "sRwAAAAVY29tLm1pY3JvYmxpbmsuc2FtcGxlU9kJdb5ZkGlTu623OfxFZHTyp+16z8E8gx0QirVDtTWVVh3wcz6oitxaw6RJdWbT0Df07tlU6TxI7Z2LnRj+AjY95G9ES7a/r/EglJDdz2WB7Dh6cxGBH9PdQNxyv0N2wQcXoykkLXH3v9LJXoz0qUVVBXDL263xgyAyFeXyEVhdaVn9tHkjejjHaDjS3nVufQKjrMjFpkub4es9gaRBI3Dv1tOIjaslTN9aUvWi9w==";
             }
 
             // since DependencyService requires implementations to have default constructor, a factory is needed
@@ -71,8 +71,10 @@ namespace BlinkCardApp
                         stringResult =
                             "BlinkCard recognizer result:\n" +
                             BuildResult(blinkCard.CardNumber, "Card number") +
-                            BuildResult(blinkCard.Owner, "Owner") +
                             BuildResult(blinkCard.CardNumberValid, "Card number valid") +
+                            BuildResult(blinkCard.CardNumberPrefix, "Card number prefix") +
+                            BuildResult(blinkCard.Iban, "IBAN") +
+                            BuildResult(blinkCard.Owner, "Owner") +
                             BuildResult(blinkCard.ExpiryDate, "Expiry date") +
                             BuildResult(blinkCard.Cvv, "CVV");
 
