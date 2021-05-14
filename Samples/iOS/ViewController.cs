@@ -27,7 +27,7 @@ namespace iOS
             customDelegate = new CustomDelegate(this);
 
             // set license key for iOS with bundle ID com.microblink.sample
-            MBCMicroblinkSDK.SharedInstance().SetLicenseKey("sRwAAAEVY29tLm1pY3JvYmxpbmsuc2FtcGxl1BIcP6dpSuS/37rVPcGKMeTrsgR8MahcSwwXAx7W+q4DISNxpyD6+I7UJwEXZY0idcmSKWVeQM6vHpTFfH7GFprdWTFfjlKyu60UtOHF0npdL2MmfTLta+7nnJRT28SshWOzbKsFOlZ0JJoeiZMEyM4znE2J6KFWNTsI8rIUfKoZvf1ZrPQRT1B+2AzIVrm6WmIIUKHsoHnmvNM424vPEBC4yhcWu2anECMkX8Li/Q==", (licenseError) => {
+            MBCMicroblinkSDK.SharedInstance().SetLicenseKey("sRwAAAEVY29tLm1pY3JvYmxpbmsuc2FtcGxl1BIcP6dpSuS/37rVOeGPMWzs39PRBgwM++WWSOa9w92s2Hn7+UdGcj+24Qru7zu1wxKzfLavdwHIzHlNKddkURwZVIvzE9jPilOKiRc26Bmwum9fehPfOzB0MUCUog2U+itV8GM8VHReXZe4A6COTULp5z3GZ0O9dcaPcuHhtzGZkCjDka9KCJxcLQmvIXbz/jTDVW/xhH4JPM4GIMlhRSePMV7gjWx8jwKrD0TKSQ==", (licenseError) => {
                 // here, you can check license error
             });
         }
