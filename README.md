@@ -1,7 +1,3 @@
-<!--<p align="center" >
-  <img src="https://raw.githubusercontent.com/BlinkID/blinkid-xamarin/design/Design/logo-microblink-xamarin.png" alt="MicroBlink" title="MicroBlink">
-</p>-->
-
 _BlinkCard_ Xamarin SDK
 ======================
 
