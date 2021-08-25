@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <metadata>
-    <remove-node path="/api/package[starts-with(@name, 'com.microblink.blinkcard.secured')]" />
+    <remove-node path="/api/package[starts-with(@name, 'com.microblink.blinkcard.secured')]/class[@name!='lIIIIIllll']" />
     <remove-node path="/api/package[starts-with(@name, 'com.microblink.blinkcard.library')]" />
     <remove-node path="/api/package[starts-with(@name, 'com.microblink.blinkcard.hardware')]/class[@name!='CameraSettings' and @extends!='java.lang.Enum']" />
     <remove-node path="/api/package[starts-with(@name, 'com.microblink.blinkcard.hardware')]/interface" />
