@@ -40,7 +40,7 @@ namespace BlinkCardApp
             }
             else
             {
-                licenseKey = "sRwAAAAVY29tLm1pY3JvYmxpbmsuc2FtcGxlU9kJdb5ZkGlTu623OfxFZHTyp+16z8E8gx0QirVDtTWVVh3wcz6oitxaw6RJdWbT0Df07tlU6TxI7Z2LnRj+AjY95G9ES7a/r/EglJDdz2WB7Dh6cxGBH9PdQNxyv0N2wQcXoykkLXH3v9LJXoz0qUVVBXDL263xgyAyFeXyEVhdaVn9tHkjejjHaDjS3nVufQKjrMjFpkub4es9gaRBI3Dv1tOIjaslTN9aUvWi9w==";
+                licenseKey = "sRwAAAAVY29tLm1pY3JvYmxpbmsuc2FtcGxlU9kJdb5ZkGlTu623Pixsw037mGhBUOlKf9FyC46r0aJfr+2FJclONWXQv/Xlj27pDDhp07b66EWvmCZeP9oUM7zUHo17x8A4DC8nIZhxCsRgz5FLeMD7opEa+XVTb3/kxNOc8zNZ2XSG0Pw9VTxYf/74hEC7mVhYMIK+4Nf94HM5hujNJInjb5BRLBqrje6tcOlqgSDdQGBkCIre9FOLJDgVtyq41HIwC4cxSS/ryg==";
             }
 
             // since DependencyService requires implementations to have default constructor, a factory is needed
