@@ -12,7 +12,7 @@ namespace BlinkCard.Forms.Droid.Overlays.Implementations
 {
     public sealed class BlinkCardOverlaySettings : RecognizerCollectionOverlaySettings, IBlinkCardOverlaySettings
     {
-        public override UISettings NativeUISettings { 
+        public override UISettings NativeUISettings {
             get {
                 var concreteUISettings = (BlinkCardUISettings)base.NativeUISettings;
                 var overlayStringsBuilder = new ScanLineOverlayStrings.Builder(Android.App.Application.Context);

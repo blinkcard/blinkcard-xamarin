@@ -87,13 +87,13 @@
     </Reference>
     <Reference Include="System.Drawing.Common.dll" />
     <Reference Include="iOSBinding">
-      <HintPath>..\packages\BlinkCard.iOS.Binding.2.3.0\lib\xamarinios10\iOSBinding.dll</HintPath>
+      <HintPath>..\packages\BlinkCard.iOS.Binding.2.4.0\lib\xamarinios10\iOSBinding.dll</HintPath>
     </Reference>
     <Reference Include="BlinkCard.Forms.Core">
-      <HintPath>..\packages\BlinkCard.Forms.Core.2.3.0\lib\netstandard1.0\BlinkCard.Forms.Core.dll</HintPath>
+      <HintPath>..\packages\BlinkCard.Forms.Core.2.4.0\lib\netstandard1.0\BlinkCard.Forms.Core.dll</HintPath>
     </Reference>
     <Reference Include="BlinkCard">
-      <HintPath>..\packages\BlinkCard.Forms.iOS.2.3.0\lib\xamarinios10\BlinkCard.dll</HintPath>
+      <HintPath>..\packages\BlinkCard.Forms.iOS.2.4.0\lib\xamarinios10\BlinkCard.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

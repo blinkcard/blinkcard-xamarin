@@ -35,3 +35,4 @@ MB_CLASS_AVAILABLE_IOS(8.0)
 + (nullable UIViewController<MBCRecognizerRunnerViewController> *)recognizerRunnerViewControllerWithOverlayViewController:(nonnull MBCOverlayViewController *)overlayViewController NS_SWIFT_NAME(recognizerRunnerViewController(withOverlayViewController:));
 
 @end
+
