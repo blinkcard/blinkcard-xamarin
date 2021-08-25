@@ -144,9 +144,7 @@ https://github.com/BlinkCard/blinkcard-android/releases/tag/v2.4.0</PackageRelea
     <TransformFile Include="Transforms\Metadata.xml" />
   </ItemGroup>
   <ItemGroup>
-    <LibraryProjectZip Include="Jars\LibBlinkCard.aar">
-      <IncludeInPackage>true</IncludeInPackage>
-    </LibraryProjectZip>
+    <LibraryProjectZip Include="Jars\LibBlinkCard.aar" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.Bindings.targets" />
   <Import Project="..\Forms\BlinkCard.Forms\packages\NuGet.Build.Packaging.0.2.2\build\NuGet.Build.Packaging.targets" Condition="Exists('..\Forms\BlinkCard.Forms\packages\NuGet.Build.Packaging.0.2.2\build\NuGet.Build.Packaging.targets')" />

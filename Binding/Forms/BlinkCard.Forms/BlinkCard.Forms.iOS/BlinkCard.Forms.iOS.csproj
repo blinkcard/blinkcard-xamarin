@@ -12,7 +12,7 @@
     <AssemblyName>BlinkCard</AssemblyName>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <PackageId>BlinkCard.Forms.iOS</PackageId>
-    <PackageVersion>2.3.0</PackageVersion>
+    <PackageVersion>2.4.0</PackageVersion>
     <Authors>Microblink</Authors>
     <Owners>Microblink</Owners>
     <PackageProjectUrl>https://github.com/BlinkCard/blinkcard-xamarin</PackageProjectUrl>
@@ -21,9 +21,9 @@
     <Description>AI-driven credit card scanning library - iOS implementation for Xamarin Forms.</Description>
     <ReleaseVersion>4.0.0</ReleaseVersion>
     <PackOnBuild>true</PackOnBuild>
-    <PackageReleaseNotes>Updated for BlinkCard iOS SDK v2.3.0
+    <PackageReleaseNotes>Updated for BlinkCard iOS SDK v2.4.0
 
-https://github.com/BlinkCard/blinkcard-ios/releases/tag/v2.3.0</PackageReleaseNotes>
+https://github.com/BlinkCard/blinkcard-ios/releases/tag/v2.4.0</PackageReleaseNotes>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
