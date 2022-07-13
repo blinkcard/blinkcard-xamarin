@@ -81,12 +81,6 @@ namespace BlinkCard.Forms.Droid.Recognizers
             set => nativeRecognizer.SetReturnFullDocumentImage(value);
         }
         
-        public bool SignResult 
-        { 
-            get => nativeRecognizer.ShouldSignResult(); 
-            set => nativeRecognizer.SetSignResult(value);
-        }
-        
     }
 
     public sealed class BlinkCardRecognizerResult : RecognizerResult, IBlinkCardRecognizerResult
@@ -101,8 +95,6 @@ namespace BlinkCard.Forms.Droid.Recognizers
         public string CardNumberPrefix => nativeResult.CardNumberPrefix;
         public bool CardNumberValid => nativeResult.IsCardNumberValid;
         public string Cvv => nativeResult.Cvv;
-        public byte[] DigitalSignature => nativeResult.GetDigitalSignature();
-        public int DigitalSignatureVersion => (int)nativeResult.DigitalSignatureVersion;
         public IDate ExpiryDate => nativeResult.ExpiryDate.Date != null ? new Date(nativeResult.ExpiryDate.Date) : null;
         public bool FirstSideBlurred => nativeResult.IsFirstSideBlurred;
         public Xamarin.Forms.ImageSource FirstSideFullDocumentImage => nativeResult.FirstSideFullDocumentImage != null ? Utils.ConvertAndroidBitmap(nativeResult.FirstSideFullDocumentImage.ConvertToBitmap()) : null;

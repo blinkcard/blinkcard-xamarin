@@ -81,12 +81,6 @@ namespace BlinkCard.Forms.Droid.Recognizers
             set => nativeRecognizer.SetReturnFullDocumentImage(value);
         }
         
-        public bool SignResult 
-        { 
-            get => nativeRecognizer.ShouldSignResult(); 
-            set => nativeRecognizer.SetSignResult(value);
-        }
-        
     }
 
     public sealed class LegacyBlinkCardEliteRecognizerResult : RecognizerResult, ILegacyBlinkCardEliteRecognizerResult
@@ -99,8 +93,6 @@ namespace BlinkCard.Forms.Droid.Recognizers
         }
         public string CardNumber => nativeResult.CardNumber;
         public string Cvv => nativeResult.Cvv;
-        public byte[] DigitalSignature => nativeResult.GetDigitalSignature();
-        public int DigitalSignatureVersion => (int)nativeResult.DigitalSignatureVersion;
         public DataMatchResult DocumentDataMatch => (DataMatchResult)nativeResult.DocumentDataMatch.Ordinal();
         public Xamarin.Forms.ImageSource FullDocumentBackImage => nativeResult.FullDocumentBackImage != null ? Utils.ConvertAndroidBitmap(nativeResult.FullDocumentBackImage.ConvertToBitmap()) : null;
         public Xamarin.Forms.ImageSource FullDocumentFrontImage => nativeResult.FullDocumentFrontImage != null ? Utils.ConvertAndroidBitmap(nativeResult.FullDocumentFrontImage.ConvertToBitmap()) : null;
