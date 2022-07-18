@@ -40,7 +40,11 @@ namespace BlinkCard
 		UnableToDoRemoteLicenceCheck,
 		LicenseIsLocked,
 		LicenseCheckFailed,
-		InvalidLicense
+		InvalidLicense,
+		PermissionExpired,
+		PayloadCorrupted,
+		PayloadSignatureVerificationFailed,
+		IncorrectTokenState
 	}
 
 	[Native]

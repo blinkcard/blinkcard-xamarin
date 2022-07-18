@@ -74,7 +74,7 @@ namespace BlinkCard
 		NSBundle DefaultResourcesBundle { get; }
 	}
 
-    // @interface MBCameraSettings : NSObject <NSCopying>
+    // @interface MBCCameraSettings : NSObject <NSCopying>
     [iOS (8,0)]
     [BaseType (typeof(NSObject))]
 	interface MBCCameraSettings : INSCopying
@@ -110,6 +110,10 @@ namespace BlinkCard
 		// @property (nonatomic) BOOL cameraMirroredVertically;
 		[Export ("cameraMirroredVertically")]
 		bool CameraMirroredVertically { get; set; }
+
+		// @property (nonatomic) CGFloat previewZoomScale;
+		[Export ("previewZoomScale")]
+		nfloat PreviewZoomScale { get; set; }
 
 		// -(NSString *)calcSessionPreset;
 		[Export ("calcSessionPreset")]
@@ -258,7 +262,15 @@ namespace BlinkCard
 		IMBCRecognizerRunnerViewController RecognizerRunnerViewControllerWithOverlayViewController (MBCOverlayViewController overlayViewController);
 	}
 
-    // typedef void (^MBLicenseErrorBlock)(MBLicenseError);
+	[Static]
+	partial interface Constants
+	{
+		// extern NSString *const MBCLicenseErrorNotification;
+		[Field ("MBCLicenseErrorNotification", "__Internal")]
+		NSString MBCLicenseErrorNotification { get; }
+	}
+
+    // typedef void (^MBCLicenseErrorBlock)(MBCLicenseError);
 	delegate void MBCLicenseErrorBlock (MBCLicenseError arg0);
 
 	// @interface MBCMicroblinkSDK : NSObject
@@ -310,7 +322,53 @@ namespace BlinkCard
 		bool IsScanningUnsupportedForCameraType (MBCCameraType type, [NullAllowed] out NSError error);
 	}
 
-	[Static]
+	// @interface MBCProductIntegrationInfo : NSObject
+	[iOS (9,0)]
+	[BaseType (typeof(NSObject))]
+	interface MBCProductIntegrationInfo
+	{
+		// +(instancetype _Nonnull)sharedInstance __attribute__((swift_name("shared()")));
+		[Static]
+		[Export ("sharedInstance")]
+		MBCProductIntegrationInfo SharedInstance ();
+
+		// @property (readonly, nonatomic, strong) NSString * _Nonnull product;
+		[Export ("product", ArgumentSemantic.Strong)]
+		string Product { get; }
+
+		// @property (readonly, nonatomic, strong) NSString * _Nonnull productVersion;
+		[Export ("productVersion", ArgumentSemantic.Strong)]
+		string ProductVersion { get; }
+
+		// @property (readonly, nonatomic, strong) NSString * _Nonnull packageName;
+		[Export ("packageName", ArgumentSemantic.Strong)]
+		string PackageName { get; }
+
+		// @property (readonly, nonatomic, strong) NSString * _Nonnull platform;
+		[Export ("platform", ArgumentSemantic.Strong)]
+		string Platform { get; }
+
+		// @property (readonly, nonatomic, strong) NSString * _Nonnull osVersion;
+		[Export ("osVersion", ArgumentSemantic.Strong)]
+		string OsVersion { get; }
+
+		// @property (readonly, nonatomic, strong) NSString * _Nonnull device;
+		[Export ("device", ArgumentSemantic.Strong)]
+		string Device { get; }
+
+		// @property (readonly, nonatomic, strong) NSString * _Nonnull userId;
+		[Export ("userId", ArgumentSemantic.Strong)]
+		string UserId { get; }
+
+		// @property (readonly, nonatomic, strong) NSString * _Nonnull licensee;
+		[Export ("licensee", ArgumentSemantic.Strong)]
+		string Licensee { get; }
+
+		// @property (readonly, nonatomic, strong) NSString * _Nonnull licenseId;
+		[Export ("licenseId", ArgumentSemantic.Strong)]
+		string LicenseId { get; }
+	}
+
 	partial interface Constants
 	{
 		// extern const MBCExceptionName MBCIllegalModificationException;
@@ -383,12 +441,12 @@ namespace BlinkCard
 		// +(instancetype _Nonnull)imageWithCmSampleBuffer:(CMSampleBufferRef _Nonnull)buffer;
 		[Static]
 		[Export ("imageWithCmSampleBuffer:")]
-		unsafe MBCImage ImageWithCmSampleBuffer (CMSampleBuffer buffer);
+		MBCImage ImageWithCmSampleBuffer (CMSampleBuffer buffer);
 
-		// +(instancetype _Nonnull)imageWithCvPixelBuffer:(CVPixelBufferRef _Nonnull)buffer;
+		// +(instancetype _Nonnull)imageWithCvPixelBuffer:(CVPixelBufferRef _Nonnull)buffer orientation:(UIImageOrientation)orientation;
 		[Static]
-		[Export ("imageWithCvPixelBuffer:")]
-		unsafe MBCImage ImageWithCvPixelBuffer (CVPixelBuffer buffer);
+		[Export ("imageWithCvPixelBuffer:orientation:")]
+		MBCImage ImageWithCvPixelBuffer (CVPixelBuffer buffer, UIImageOrientation orientation);
 	}
 
     // @protocol MBCNativeResult
@@ -442,7 +500,31 @@ namespace BlinkCard
 		MBCDateResult DateResultWithDay (nint day, nint month, nint year, [NullAllowed] string originalDateString);
 	}
 
-    // @protocol MBDebugRecognizerRunnerViewControllerDelegate <NSObject>
+	// @interface MBCSignedPayload : NSObject
+	[iOS (11,0)]
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MBCSignedPayload
+	{
+		// @property (readonly, nonatomic) NSString * _Nullable payload;
+		[NullAllowed, Export ("payload")]
+		string Payload { get; }
+
+		// @property (readonly, nonatomic) NSString * _Nullable signature;
+		[NullAllowed, Export ("signature")]
+		string Signature { get; }
+
+		// @property (readonly, nonatomic) NSString * _Nullable signatureVersion;
+		[NullAllowed, Export ("signatureVersion")]
+		string SignatureVersion { get; }
+
+		// -(instancetype _Nonnull)initWithPayload:(NSString * _Nonnull)payload signature:(NSString * _Nonnull)signature signatureVersion:(NSString * _Nonnull)signatureVersion __attribute__((objc_designated_initializer));
+		[Export ("initWithPayload:signature:signatureVersion:")]
+		[DesignatedInitializer]
+		IntPtr Constructor (string payload, string signature, string signatureVersion);
+	}
+
+    // @protocol MBCDebugRecognizerRunnerViewControllerDelegate <NSObject>
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
 	interface MBCDebugRecognizerRunnerViewControllerDelegate
@@ -621,7 +703,18 @@ namespace BlinkCard
 		void State (MBCRecognizerRunnerViewController recognizerRunnerViewController, MBCRecognizerResultState state);
 	}
 
-    // @protocol MBDebugRecognizerRunnerDelegate <NSObject>
+	// @protocol MBCFrameRecognitionRecognizerRunnerViewControllerDelegate <NSObject>
+	[Protocol, Model (AutoGeneratedName = true)]
+	[BaseType (typeof(NSObject))]
+	interface MBCFrameRecognitionRecognizerRunnerViewControllerDelegate
+	{
+		// @required -(void)recognizerRunnerViewControllerDidFinishFrameRecognition:(UIViewController<MBCRecognizerRunnerViewController> * _Nonnull)recognizerRunnerViewController state:(MBCRecognizerResultState)state;
+		[Abstract]
+		[Export ("recognizerRunnerViewControllerDidFinishFrameRecognition:state:")]
+		void State (MBCRecognizerRunnerViewController recognizerRunnerViewController, MBCRecognizerResultState state);
+	}
+
+    // @protocol MBCDebugRecognizerRunnerDelegate <NSObject>
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
 	interface MBCDebugRecognizerRunnerDelegate
@@ -829,8 +922,82 @@ namespace BlinkCard
 		void ReconfigureRecognizers (MBCRecognizerCollection recognizerCollection);
 	}
 
-    // @interface MBEntity : NSObject
-    
+	// @interface MBCBlinkCardEditOverlayTheme : NSObject
+	[iOS (8,0)]
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MBCBlinkCardEditOverlayTheme
+	{
+		// +(instancetype _Nonnull)sharedInstance __attribute__((swift_name("shared()")));
+		[Static]
+		[Export ("sharedInstance")]
+		MBCBlinkCardEditOverlayTheme SharedInstance ();
+
+		// @property (nonatomic, strong) UIColor * _Nonnull placeholderTextColor;
+		[Export ("placeholderTextColor", ArgumentSemantic.Strong)]
+		UIColor PlaceholderTextColor { get; set; }
+
+		// @property (nonatomic, strong) UIColor * _Nonnull floatingTitleIdleModeColor;
+		[Export ("floatingTitleIdleModeColor", ArgumentSemantic.Strong)]
+		UIColor FloatingTitleIdleModeColor { get; set; }
+
+		// @property (nonatomic, strong) UIColor * _Nonnull floatingTitleFloatingModeColor;
+		[Export ("floatingTitleFloatingModeColor", ArgumentSemantic.Strong)]
+		UIColor FloatingTitleFloatingModeColor { get; set; }
+
+		// @property (nonatomic, strong) UIColor * _Nonnull floatingTitleEditedModeColor;
+		[Export ("floatingTitleEditedModeColor", ArgumentSemantic.Strong)]
+		UIColor FloatingTitleEditedModeColor { get; set; }
+
+		// @property (nonatomic, strong) UIColor * _Nonnull floatingTitleErrorModeColor;
+		[Export ("floatingTitleErrorModeColor", ArgumentSemantic.Strong)]
+		UIColor FloatingTitleErrorModeColor { get; set; }
+
+		// @property (nonatomic, strong) UIColor * _Nonnull separatorViewColor;
+		[Export ("separatorViewColor", ArgumentSemantic.Strong)]
+		UIColor SeparatorViewColor { get; set; }
+
+		// @property (nonatomic, strong) UIColor * _Nonnull confirmButtonColor;
+		[Export ("confirmButtonColor", ArgumentSemantic.Strong)]
+		UIColor ConfirmButtonColor { get; set; }
+
+		// @property (nonatomic, strong) UIColor * _Nonnull confirmButtonTitleColor;
+		[Export ("confirmButtonTitleColor", ArgumentSemantic.Strong)]
+		UIColor ConfirmButtonTitleColor { get; set; }
+
+		// @property (nonatomic, strong) UIFont * _Nonnull textFieldFont;
+		[Export ("textFieldFont", ArgumentSemantic.Strong)]
+		UIFont TextFieldFont { get; set; }
+
+		// @property (nonatomic, strong) UIFont * _Nonnull floatingTitleFont;
+		[Export ("floatingTitleFont", ArgumentSemantic.Strong)]
+		UIFont FloatingTitleFont { get; set; }
+
+		// @property (nonatomic, strong) UIFont * _Nonnull confirmButtonFont;
+		[Export ("confirmButtonFont", ArgumentSemantic.Strong)]
+		UIFont ConfirmButtonFont { get; set; }
+
+		// @property (nonatomic, strong) UIImage * _Nullable leadingImage;
+		[NullAllowed, Export ("leadingImage", ArgumentSemantic.Strong)]
+		UIImage LeadingImage { get; set; }
+
+		// @property (nonatomic, strong) UIImage * _Nullable editButtonImage;
+		[NullAllowed, Export ("editButtonImage", ArgumentSemantic.Strong)]
+		UIImage EditButtonImage { get; set; }
+
+		// @property (assign, nonatomic) CGFloat confirmButtonCornerRadius;
+		[Export ("confirmButtonCornerRadius")]
+		nfloat ConfirmButtonCornerRadius { get; set; }
+	}
+
+	// @interface MBCBlinkCardEditNavigationController : UINavigationController
+	[iOS (9,0)]
+	[BaseType (typeof(UINavigationController))]
+	interface MBCBlinkCardEditNavigationController
+	{
+	}
+
+    // @interface MBCEntity : NSObject
     [BaseType(typeof(NSObject))]
     interface MBCEntity
     {
@@ -1191,31 +1358,6 @@ interface MBCOcrLayout
         bool DetectGlare { get; set; }
     }
 
-    // @protocol MBDigitalSignatureResult
-    [Protocol]
-    interface IMBCDigitalSignatureResult
-    {
-        // @required @property (readonly, nonatomic) NSData * _Nullable digitalSignature;
-        [Abstract]
-        [NullAllowed, Export("digitalSignature")]
-        NSData DigitalSignature { get; }
-
-        // @required @property (readonly, nonatomic) NSUInteger digitalSignatureVersion;
-        [Abstract]
-        [Export ("digitalSignatureVersion")]
-        nint DigitalSignatureVersion { get; }
-    }
-
-        // @protocol MBDigitalSignature
-    [Protocol]
-    interface IMBCDigitalSignature
-    {
-        // @required @property (assign, nonatomic) BOOL signResult;
-        [Abstract]
-        [Export ("signResult")]
-        bool SignResult { get; set; }
-    }
-
     // @protocol MBCombinedFullDocumentImageResult
     [Protocol]
     interface IMBCCombinedFullDocumentImageResult
@@ -1356,11 +1498,11 @@ interface MBCOcrLayout
 		string Iban { get; set; }
 	}
 
-    // @interface MBCBlinkCardRecognizerResult : MBCRecognizerResult <NSCopying, MBCCombinedRecognizerResult, MBCDigitalSignatureResult>
+    // @interface MBCBlinkCardRecognizerResult : MBCRecognizerResult <NSCopying, MBCCombinedRecognizerResult>
 	[iOS (9,0)]
 	[BaseType (typeof(MBCRecognizerResult))]
 	[DisableDefaultCtor]
-	interface MBCBlinkCardRecognizerResult : INSCopying, MBCCombinedRecognizerResult, IMBCDigitalSignatureResult
+	interface MBCBlinkCardRecognizerResult : INSCopying, MBCCombinedRecognizerResult
 	{
 		// @property (readonly, nonatomic) MBCIssuer issuer;
 		[Export ("issuer")]
@@ -1423,10 +1565,10 @@ interface MBCOcrLayout
 		MBCBlinkCardProcessingStatus ProcessingStatus { get; }
 	}
 
-    // @interface MBCBlinkCardRecognizer : MBCRecognizer <NSCopying, MBCCombinedRecognizer, MBCDigitalSignature, MBCFullDocumentImage, MBCEncodeFullDocumentImage, MBCFullDocumentImageDpi, MBCFullDocumentImageExtensionFactors>
+    // @interface MBCBlinkCardRecognizer : MBCRecognizer <NSCopying, MBCCombinedRecognizer, MBCFullDocumentImage, MBCEncodeFullDocumentImage, MBCFullDocumentImageDpi, MBCFullDocumentImageExtensionFactors>
 	[iOS (9,0)]
 	[BaseType (typeof(MBCRecognizer))]
-	interface MBCBlinkCardRecognizer : INSCopying, IMBCCombinedRecognizer, IMBCDigitalSignature, IMBCFullDocumentImage, IMBCEncodeFullDocumentImage, IMBCFullDocumentImageDpi, IMBCFullDocumentImageExtensionFactors
+	interface MBCBlinkCardRecognizer : INSCopying, IMBCCombinedRecognizer, IMBCFullDocumentImage, IMBCEncodeFullDocumentImage, IMBCFullDocumentImageDpi, IMBCFullDocumentImageExtensionFactors
 	{
 		// @property (readonly, nonatomic, strong) MBCBlinkCardRecognizerResult * _Nonnull result;
 		[Export ("result", ArgumentSemantic.Strong)]
@@ -1506,11 +1648,11 @@ interface MBCOcrLayout
 	}
 
 
-	// @interface MBCLegacyBlinkCardRecognizerResult : MBCRecognizerResult <NSCopying, MBCCombinedRecognizerResult, MBCDigitalSignatureResult, MBCCombinedFullDocumentImageResult, MBCEncodedCombinedFullDocumentImageResult>
+	// @interface MBCLegacyBlinkCardRecognizerResult : MBCRecognizerResult <NSCopying, MBCCombinedRecognizerResult, MBCCombinedFullDocumentImageResult, MBCEncodedCombinedFullDocumentImageResult>
 	[iOS (8,0)]
 	[BaseType (typeof(MBCRecognizerResult))]
 	[DisableDefaultCtor]
-	interface MBCLegacyBlinkCardRecognizerResult : INSCopying, MBCCombinedRecognizerResult, IMBCDigitalSignatureResult, IMBCCombinedFullDocumentImageResult, IMBCEncodedCombinedFullDocumentImageResult
+	interface MBCLegacyBlinkCardRecognizerResult : INSCopying, MBCCombinedRecognizerResult, IMBCCombinedFullDocumentImageResult, IMBCEncodedCombinedFullDocumentImageResult
 	{
 		// @property (readonly, nonatomic) NSString * _Nonnull cardNumber;
 		[Export ("cardNumber")]
@@ -1541,10 +1683,10 @@ interface MBCOcrLayout
 		string Iban { get; }
 	}
 
-    // @interface MBCLegacyBlinkCardRecognizer : MBCRecognizer <NSCopying, MBCCombinedRecognizer, MBCFullDocumentImage, MBCEncodeFullDocumentImage, MBCFullDocumentImageDpi, MBCGlareDetection, MBCDigitalSignature, MBCFullDocumentImageExtensionFactors>
+    // @interface MBCLegacyBlinkCardRecognizer : MBCRecognizer <NSCopying, MBCCombinedRecognizer, MBCFullDocumentImage, MBCEncodeFullDocumentImage, MBCFullDocumentImageDpi, MBCGlareDetection, MBCFullDocumentImageExtensionFactors>
 	[iOS (8,0)]
 	[BaseType (typeof(MBCRecognizer))]
-	interface MBCLegacyBlinkCardRecognizer : INSCopying, IMBCCombinedRecognizer, IMBCFullDocumentImage, IMBCEncodeFullDocumentImage, IMBCFullDocumentImageDpi, IMBCGlareDetection, IMBCDigitalSignature, IMBCFullDocumentImageExtensionFactors
+	interface MBCLegacyBlinkCardRecognizer : INSCopying, IMBCCombinedRecognizer, IMBCFullDocumentImage, IMBCEncodeFullDocumentImage, IMBCFullDocumentImageDpi, IMBCGlareDetection, IMBCFullDocumentImageExtensionFactors
 	{
 		// @property (readonly, nonatomic, strong) MBCLegacyBlinkCardRecognizerResult * _Nonnull result;
 		[Export ("result", ArgumentSemantic.Strong)]
@@ -1587,11 +1729,11 @@ interface MBCOcrLayout
 		bool AnonymizeIban { get; set; }
 	}
 
-	// @interface MBCLegacyBlinkCardEliteRecognizerResult : MBCRecognizerResult <NSCopying, MBCCombinedRecognizerResult, MBCDigitalSignatureResult, MBCCombinedFullDocumentImageResult, MBCEncodedCombinedFullDocumentImageResult>
+	// @interface MBCLegacyBlinkCardEliteRecognizerResult : MBCRecognizerResult <NSCopying, MBCCombinedRecognizerResult, MBCCombinedFullDocumentImageResult, MBCEncodedCombinedFullDocumentImageResult>
 	[iOS (8,0)]
 	[BaseType (typeof(MBCRecognizerResult))]
 	[DisableDefaultCtor]
-	interface MBCLegacyBlinkCardEliteRecognizerResult : INSCopying, MBCCombinedRecognizerResult, IMBCDigitalSignatureResult, IMBCCombinedFullDocumentImageResult, IMBCEncodedCombinedFullDocumentImageResult
+	interface MBCLegacyBlinkCardEliteRecognizerResult : INSCopying, MBCCombinedRecognizerResult, IMBCCombinedFullDocumentImageResult, IMBCEncodedCombinedFullDocumentImageResult
 	{
 		// @property (readonly, nonatomic) NSString * _Nonnull cardNumber;
 		[Export ("cardNumber")]
@@ -1614,10 +1756,10 @@ interface MBCOcrLayout
 		string InventoryNumber { get; }
 	}
 
-	// @interface MBCLegacyBlinkCardEliteRecognizer : MBCRecognizer <NSCopying, MBCCombinedRecognizer, MBCFullDocumentImage, MBCEncodeFullDocumentImage, MBCFullDocumentImageDpi, MBCGlareDetection, MBCDigitalSignature, MBCFullDocumentImageExtensionFactors>
+	// @interface MBCLegacyBlinkCardEliteRecognizer : MBCRecognizer <NSCopying, MBCCombinedRecognizer, MBCFullDocumentImage, MBCEncodeFullDocumentImage, MBCFullDocumentImageDpi, MBCGlareDetection, MBCFullDocumentImageExtensionFactors>
 	[iOS (8,0)]
 	[BaseType (typeof(MBCRecognizer))]
-	interface MBCLegacyBlinkCardEliteRecognizer : INSCopying, IMBCCombinedRecognizer, IMBCFullDocumentImage, IMBCEncodeFullDocumentImage, IMBCFullDocumentImageDpi, IMBCGlareDetection, IMBCDigitalSignature, IMBCFullDocumentImageExtensionFactors
+	interface MBCLegacyBlinkCardEliteRecognizer : INSCopying, IMBCCombinedRecognizer, IMBCFullDocumentImage, IMBCEncodeFullDocumentImage, IMBCFullDocumentImageDpi, IMBCGlareDetection, IMBCFullDocumentImageExtensionFactors
 	{
 		// @property (readonly, nonatomic, strong) MBCLegacyBlinkCardEliteRecognizerResult * _Nonnull result;
 		[Export ("result", ArgumentSemantic.Strong)]
@@ -1654,6 +1796,9 @@ interface MBCOcrLayout
     [BaseType(typeof(MBCOverlayViewController))]
     interface MBCBaseOverlayViewController
     {
+		// -(void)reconfigureRecognizers:(MBCRecognizerCollection * _Nonnull)recognizerCollection;
+		[Export ("reconfigureRecognizers:")]
+		void ReconfigureRecognizers (MBCRecognizerCollection recognizerCollection);
     }
 
     // @interface MBCRecognizerCollection : NSObject <NSCopying>
@@ -1715,9 +1860,9 @@ interface MBCOcrLayout
         [Export ("showStatusBar")]
         bool ShowStatusBar { get; set; }
 
-        // @property (assign, nonatomic) NSUInteger supportedOrientations;
-        [Export ("supportedOrientations")]
-        nuint SupportedOrientations { get; set; }
+        // @property (assign, nonatomic) UIInterfaceOrientationMask supportedOrientations;
+        [Export ("supportedOrientations", ArgumentSemantic.Assign)]
+        UIInterfaceOrientationMask SupportedOrientations { get; set; }
 
         // @property (nonatomic, strong) NSString * _Nullable soundFilePath;
         [NullAllowed, Export("soundFilePath", ArgumentSemantic.Strong)]
@@ -1821,8 +1966,104 @@ interface MBCOcrLayout
         void SubviewAnimationDidFinish(MBCSubview subview);
     }
 
-    // @interface MBDisplayableObject : NSObject
-    
+	// @interface MBCRectDocumentSubview : MBCSubview
+	[iOS (8,0)]
+	[BaseType (typeof(MBCSubview))]
+	[DisableDefaultCtor]
+	interface MBCRectDocumentSubview
+	{
+		// -(instancetype _Nonnull)initWithFrame:(CGRect)frame __attribute__((objc_designated_initializer));
+		[Export ("initWithFrame:")]
+		[DesignatedInitializer]
+		IntPtr Constructor (CGRect frame);
+
+		// @property (nonatomic) CGFloat widthToHightAspectRatio;
+		[Export ("widthToHightAspectRatio")]
+		nfloat WidthToHightAspectRatio { get; set; }
+
+		// @property (nonatomic) NSString * _Nonnull titleText;
+		[Export ("titleText")]
+		string TitleText { get; set; }
+
+		// @property (nonatomic) UILabel * _Nonnull titleView;
+		[Export ("titleView", ArgumentSemantic.Assign)]
+		UILabel TitleView { get; set; }
+
+		// @property (nonatomic) CGSize viewSize;
+		[Export ("viewSize", ArgumentSemantic.Assign)]
+		CGSize ViewSize { get; set; }
+
+		// @property (nonatomic) CGFloat titleTextDelay;
+		[Export ("titleTextDelay")]
+		nfloat TitleTextDelay { get; set; }
+
+		// @property (nonatomic) UIView * _Nonnull centerView;
+		[Export ("centerView", ArgumentSemantic.Assign)]
+		UIView CenterView { get; set; }
+
+		[Wrap ("WeakRectSubviewDelegate")]
+		[NullAllowed]
+		MBCRectDocumentSubviewDelegate RectSubviewDelegate { get; set; }
+
+		// @property (nonatomic, weak) id<MBCRectDocumentSubviewDelegate> _Nullable rectSubviewDelegate;
+		[NullAllowed, Export ("rectSubviewDelegate", ArgumentSemantic.Weak)]
+		NSObject WeakRectSubviewDelegate { get; set; }
+
+		// -(void)startScanLineAnimation;
+		[Export ("startScanLineAnimation")]
+		void StartScanLineAnimation ();
+
+		// -(void)stopScanLineAnimation;
+		[Export ("stopScanLineAnimation")]
+		void StopScanLineAnimation ();
+
+		// -(void)startFlipAnimation;
+		[Export ("startFlipAnimation")]
+		void StartFlipAnimation ();
+
+		// -(void)updateForMode:(MBCRectDocumentSubviewScanMode)mode;
+		[Export ("updateForMode:")]
+		void UpdateForMode (MBCRectDocumentSubviewScanMode mode);
+
+		// -(void)startScannedFirstSideFinishAnimation;
+		[Export ("startScannedFirstSideFinishAnimation")]
+		void StartScannedFirstSideFinishAnimation ();
+
+		// -(void)resetTitleLabelConstraint;
+		[Export ("resetTitleLabelConstraint")]
+		void ResetTitleLabelConstraint ();
+
+		// -(void)configureCornersBounds;
+		[Export ("configureCornersBounds")]
+		void ConfigureCornersBounds ();
+
+		// -(void)updateProgress;
+		[Export ("updateProgress")]
+		void UpdateProgress ();
+	}
+
+	// @protocol MBCRectDocumentSubviewDelegate <NSObject>
+	[Protocol, Model (AutoGeneratedName = true)]
+	[BaseType (typeof(NSObject))]
+	interface MBCRectDocumentSubviewDelegate
+	{
+		// @required -(void)rectDocumentSubviewDidFinishFlipAnimation:(MBCRectDocumentSubview * _Nonnull)rectDocumentSubvie;
+		[Abstract]
+		[Export ("rectDocumentSubviewDidFinishFlipAnimation:")]
+		void RectDocumentSubviewDidFinishFlipAnimation (MBCRectDocumentSubview rectDocumentSubvie);
+
+		// @required -(void)rectDocumentSubviewDidFinishAnimation:(MBCRectDocumentSubview * _Nonnull)rectDocumentSubvie;
+		[Abstract]
+		[Export ("rectDocumentSubviewDidFinishAnimation:")]
+		void RectDocumentSubviewDidFinishAnimation (MBCRectDocumentSubview rectDocumentSubvie);
+
+		// @required -(void)rectDocumentSubviewDidStartTransitionAnimation:(MBCRectDocumentSubview * _Nonnull)rectDocumentSubvie mode:(MBCRectDocumentSubviewScanMode)mode;
+		[Abstract]
+		[Export ("rectDocumentSubviewDidStartTransitionAnimation:mode:")]
+		void RectDocumentSubviewDidStartTransitionAnimation (MBCRectDocumentSubview rectDocumentSubvie, MBCRectDocumentSubviewScanMode mode);
+	}
+
+    // @interface MBCDisplayableObject : NSObject
     [BaseType(typeof(NSObject))]
 	interface MBCDisplayableObject
 	{
@@ -1857,19 +2098,8 @@ interface MBCOcrLayout
 		NSObject[] Points { get; set; }
 	}
 
-    // @protocol MBPointDetectorSubview <NSObject>
-    [Protocol, Model]
-    [BaseType(typeof(NSObject))]
-    interface IMBCPointDetectorSubview
-    {
-        // @required -(void)detectionFinishedWithDisplayablePoints:(MBDisplayablePointsDetection *)displayablePointsDetection;
-        [Abstract]
-        [Export ("detectionFinishedWithDisplayablePoints:")]
-        void DetectionFinishedWithDisplayablePoints(MBCDisplayablePointsDetection displayablePointsDetection);
-    }
 
-    // @interface MBDotsSubview : MBSubview <MBPointDetectorSubview>
-    
+    // @interface MBCDotsSubview : MBSubview <MBPointDetectorSubview>
     [BaseType(typeof(MBCSubview))]
     interface MBCDotsSubview : IMBCPointDetectorSubview
     {
@@ -1908,8 +2138,31 @@ interface MBCOcrLayout
         MBCQuadrangle DetectionLocation { get; set; }
     }
 
-    // @interface MBTapToFocusSubview : MBSubview
-    
+	// @protocol MBCPointDetectorSubview <NSObject>
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
+	[BaseType (typeof(NSObject))]
+	interface IMBCPointDetectorSubview
+	{
+		// @required -(void)detectionFinishedWithDisplayablePoints:(MBCDisplayablePointsDetection *)displayablePointsDetection;
+		[Abstract]
+		[Export ("detectionFinishedWithDisplayablePoints:")]
+		void DetectionFinishedWithDisplayablePoints (MBCDisplayablePointsDetection displayablePointsDetection);
+
+		// @required -(void)detectionFinishedWithDisplayablePoints:(MBCDisplayablePointsDetection *)displayablePointsDetection originalRectangle:(CGRect)originalRect relativeRectangle:(CGRect)relativeRectangle;
+		[Abstract]
+		[Export ("detectionFinishedWithDisplayablePoints:originalRectangle:relativeRectangle:")]
+		void OriginalRectangle (MBCDisplayablePointsDetection displayablePointsDetection, CGRect originalRect, CGRect relativeRectangle);
+	}
+
+    // @interface MBCTapToFocusSubview : MBSubview
     [BaseType(typeof(MBCSubview))]
     interface MBCTapToFocusSubview
     {
@@ -2156,5 +2409,4 @@ interface MBCOcrLayout
 		[Export ("scanningStatusLabelColor", ArgumentSemantic.Strong)]
 		UIColor ScanningStatusLabelColor { get; set; }
 	}
-
 }

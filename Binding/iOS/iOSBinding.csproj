@@ -11,17 +11,17 @@
     <AssemblyName>iOSBinding</AssemblyName>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <PackageId>BlinkCard.iOS.Binding</PackageId>
-    <PackageVersion>2.4.0</PackageVersion>
+    <PackageVersion>2.6.0</PackageVersion>
     <Authors>Microblink</Authors>
     <Owners>Microblink</Owners>
     <PackageProjectUrl>https://github.com/BlinkCard/blinkcard-xamarin</PackageProjectUrl>
-    <PackageReleaseNotes>Updated for BlinkCard iOS SDK v2.4.0:
+    <PackageReleaseNotes>Updated for BlinkCard iOS SDK v2.6.0:
 
-https://github.com/blinkcard-ios/releases/tag/v2.4.0</PackageReleaseNotes>
+https://github.com/blinkcard-ios/releases/tag/v2.6.0</PackageReleaseNotes>
     <Summary>AI-driven credit card scanning library - native iOS SDK binding package.</Summary>
     <Title>BlinkCard</Title>
     <Description>AI-driven credit card scanning library - native iOS SDK binding package.</Description>
-    <ReleaseVersion>4.0.0</ReleaseVersion>
+    <ReleaseVersion>2.6.0</ReleaseVersion>
     <PackOnBuild>true</PackOnBuild>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -64,6 +64,5 @@ https://github.com/blinkcard-ios/releases/tag/v2.4.0</PackageReleaseNotes>
     </NativeReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />
-  <Import Project="packages\NuGet.Build.Packaging.0.2.0\build\NuGet.Build.Packaging.targets" Condition="Exists('packages\NuGet.Build.Packaging.0.2.0\build\NuGet.Build.Packaging.targets')" />
   <Import Project="..\Forms\BlinkCard.Forms\packages\NuGet.Build.Packaging.0.2.2\build\NuGet.Build.Packaging.targets" Condition="Exists('..\Forms\BlinkCard.Forms\packages\NuGet.Build.Packaging.0.2.2\build\NuGet.Build.Packaging.targets')" />
 </Project>
