@@ -36,11 +36,11 @@ namespace BlinkCardApp
             // both these license keys are demo license keys for bundleID/applicationID com.microblink.sample
             if (Device.RuntimePlatform == Device.iOS)
             {
-                licenseKey = "sRwAAAEVY29tLm1pY3JvYmxpbmsuc2FtcGxl1BIcP6dpSuS/37rVPvGgnEXtW6n0WYNXlN/0i1f88yoVpcC6wVI7C9/PwW96iHudfFxZtXdYuU3G3FGWKgCcqkSdZwRtiHrFeYz8beVEwPAGbLMPGidJ8qm5ZtgfLYHJ5NqR0qfIfqKTIDlsGzUY2D2qp3KUfYcscbf9JftuQdMpQ8VfQ8eu0+x1aUckcowsgAfq8/CTF3cpaSF1mBKMCO+idtTRWI8B52aZZDeybQ==";
+                licenseKey = "sRwAAAEVY29tLm1pY3JvYmxpbmsuc2FtcGxl1BIcP6dpSuS/37rVPJmIM83fr/w89BOJALPcMQUwS9wIOKQPWi56s63K7WjS0zghtd7iZjWQ+Y3GsPgYIwIoPX1Pw0lyXLGevYFZrCPL+GqHVPgVolbhruatlqsXDECRwQsN7TwA9UXVr3Zd+EmiwbsglYqI0wBx7IyPndVfRcFmGozG4PSP9+0Mb5BLUPHHxuH1iV+TlGbukfps/XEHEoFXHnQXLWUH4BRClsSJVQ==";
             }
             else
             {
-                licenseKey = "sRwAAAAVY29tLm1pY3JvYmxpbmsuc2FtcGxlU9kJdb5ZkGlTu623PARDZ2y3bw/2FMh5N8Ns88iVHtrPi9+/nWa1Jfjuaio9sNqvjMT6OtkQ6mJBjE58IcmwG5+mm6WUi+Jy6MYfmGIzIoMFQvkqfYUo2Q/WFqsbYjo57kuic4Q5BWQbqavo1wF7llPipW1ABXqrTLnoewhyHJrJCMyXSOvK6ensoeNbd2iJtgi2L6myHxmekGcmW2ZnKr9otoMUy0YqZ5AjqMxjDw==";
+                licenseKey = "sRwAAAAVY29tLm1pY3JvYmxpbmsuc2FtcGxlU9kJdb5ZkGlTu623PORDYB+F7kQhEBq7NH99rEoiwlswb/xqR+N/qCGFqB+yiERO6I2FCFT1SQ1KZNYV1C1X6c2W+/VCx/ExkgIxI/3p7ADud+/DxL1YH5H4Uhb3NtoVBh6rZHf/0nhYq/8qGdWYbvvogbrPawf8+H4ApmobtEDuFiW4ezPk8wb25Rf3btpnjy98CW4DANPeEapSgnpUri7b9N+5vJ0WIDg2B58JjA==";
             }
 
             // since DependencyService requires implementations to have default constructor, a factory is needed

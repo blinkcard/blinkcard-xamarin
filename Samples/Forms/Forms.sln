@@ -54,4 +54,7 @@ Global
 		{5EE2B66A-8251-499D-B0B7-76A670C68DFD}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{5EE2B66A-8251-499D-B0B7-76A670C68DFD}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		version = 2.6.0
+	EndGlobalSection
 EndGlobal
