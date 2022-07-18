@@ -8,8 +8,6 @@
 #import "MBRecognizerResult.h"
 #import "MBDateResult.h"
 
-#import "MBDigitalSignatureResult.h"
-
 #import "MBCombinedRecognizerResult.h"
 #import "MBCombinedFullDocumentImageResult.h"
 #import "MBEncodedCombinedFullDocumentImageResult.h"
@@ -20,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
  * Class representing values obtained when scanning front side of the Elite Payment Card
  */
 MB_CLASS_AVAILABLE_IOS(8.0) MB_CLASS_DEPRECATED("Use MBCBlinkCardRecognizerResult")
-@interface MBCLegacyBlinkCardEliteRecognizerResult : MBCRecognizerResult<NSCopying, MBCCombinedRecognizerResult, MBCDigitalSignatureResult, MBCCombinedFullDocumentImageResult, MBCEncodedCombinedFullDocumentImageResult>
+@interface MBCLegacyBlinkCardEliteRecognizerResult : MBCRecognizerResult<NSCopying, MBCCombinedRecognizerResult, MBCCombinedFullDocumentImageResult, MBCEncodedCombinedFullDocumentImageResult>
 
 MB_INIT_UNAVAILABLE
 
