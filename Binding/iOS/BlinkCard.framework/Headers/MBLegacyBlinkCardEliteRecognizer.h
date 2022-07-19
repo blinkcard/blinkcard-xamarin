@@ -14,7 +14,6 @@
 #import "MBEncodeFullDocumentImage.h"
 #import "MBFullDocumentImageDpi.h"
 #import "MBGlareDetection.h"
-#import "MBDigitalSignature.h"
 #import "MBFullDocumentImageExtensionFactors.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -23,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
  * Recognizer used for scanning the front side of elite credit/debit cards.
  */
 MB_CLASS_AVAILABLE_IOS(8.0) MB_CLASS_DEPRECATED("Use MBCBlinkCardRecognizer") MB_FINAL
-@interface MBCLegacyBlinkCardEliteRecognizer : MBCRecognizer <NSCopying, MBCCombinedRecognizer, MBCFullDocumentImage, MBCEncodeFullDocumentImage, MBCFullDocumentImageDpi, MBCGlareDetection, MBCDigitalSignature, MBCFullDocumentImageExtensionFactors>
+@interface MBCLegacyBlinkCardEliteRecognizer : MBCRecognizer <NSCopying, MBCCombinedRecognizer, MBCFullDocumentImage, MBCEncodeFullDocumentImage, MBCFullDocumentImageDpi, MBCGlareDetection, MBCFullDocumentImageExtensionFactors>
 
 MB_INIT
 

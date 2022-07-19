@@ -101,14 +101,6 @@ namespace BlinkCard.Forms.iOS.Recognizers
         }
         
         
-        
-        public bool SignResult 
-        { 
-            get => nativeRecognizer.SignResult; 
-            set => nativeRecognizer.SignResult = value;
-        }
-        
-        
     }
 
     public sealed class BlinkCardRecognizerResult : RecognizerResult, IBlinkCardRecognizerResult
@@ -123,8 +115,6 @@ namespace BlinkCard.Forms.iOS.Recognizers
         public string CardNumberPrefix => nativeResult.CardNumberPrefix;
         public bool CardNumberValid => nativeResult.CardNumberValid;
         public string Cvv => nativeResult.Cvv;
-        public byte[] DigitalSignature => nativeResult.DigitalSignature != null ? nativeResult.DigitalSignature.ToArray() : null;
-        public int DigitalSignatureVersion => (int)nativeResult.DigitalSignatureVersion;
         public IDate ExpiryDate => nativeResult.ExpiryDate != null ? new Date(nativeResult.ExpiryDate) : null;
         public bool FirstSideBlurred => nativeResult.FirstSideBlurred;
         public Xamarin.Forms.ImageSource FirstSideFullDocumentImage => nativeResult.FirstSideFullDocumentImage != null ? Utils.ConvertUIImage(nativeResult.FirstSideFullDocumentImage.Image) : null;

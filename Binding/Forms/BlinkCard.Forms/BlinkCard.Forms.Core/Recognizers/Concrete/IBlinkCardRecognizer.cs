@@ -20,7 +20,7 @@
         /// 
         ///  
         ///
-        /// By default, this is set to 'See MBCBlinkCardAnonymizationSettings for default settings'
+        /// By default, this is set to '[0, 0, 0, 0, 0, 0, 0]'
         /// </summary>
         IBlinkCardAnonymizationSettings AnonymizationSettings { get; set; }
         
@@ -76,7 +76,7 @@
         /// @see CImageExtensionFactors
         ///  
         ///
-        /// By default, this is set to '{0.0f, 0.0f, 0.0f, 0.0f}'
+        /// By default, this is set to '[0.0, 0.0, 0.0, 0.0]'
         /// </summary>
         IImageExtensionFactors FullDocumentImageExtensionFactors { get; set; }
         
@@ -87,7 +87,7 @@
         /// 
         ///  
         ///
-        /// By default, this is set to '0.0f'
+        /// By default, this is set to '0.0'
         /// </summary>
         float PaddingEdge { get; set; }
         
@@ -99,15 +99,6 @@
         /// By default, this is set to 'false'
         /// </summary>
         bool ReturnFullDocumentImage { get; set; }
-        
-        /// <summary>
-        /// Whether or not recognition result should be signed.
-        /// 
-        ///  
-        ///
-        /// By default, this is set to 'false'
-        /// </summary>
-        bool SignResult { get; set; }
         
 
         /// <summary>
@@ -140,16 +131,6 @@
         ///  Payment card's security code/value. 
         /// </summary>
         string Cvv { get; }
-        
-        /// <summary>
-        /// Digital signature of the recognition result. Available only if enabled with signResult property. 
-        /// </summary>
-        byte[] DigitalSignature { get; }
-        
-        /// <summary>
-        /// Version of the digital signature. Available only if enabled with signResult property. 
-        /// </summary>
-        int DigitalSignatureVersion { get; }
         
         /// <summary>
         /// The payment card's expiry date. 

@@ -47,7 +47,7 @@
     <Reference Include="Mono.Android" />
     <Reference Include="Java.Interop" />
     <Reference Include="BlinkCardAARBinding">
-      <HintPath>packages\BlinkCard.Android.Binding.2.4.0\lib\monoandroid10.0\BlinkCardAARBinding.dll</HintPath>
+      <HintPath>packages\BlinkCard.Android.Binding.2.6.0\lib\monoandroid10.0\BlinkCardAARBinding.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Xamarin.AndroidX.MultiDex">

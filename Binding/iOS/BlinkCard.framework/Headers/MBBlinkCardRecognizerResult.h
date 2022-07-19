@@ -8,8 +8,6 @@
 #import "MBRecognizerResult.h"
 #import "MBDateResult.h"
 
-#import "MBDigitalSignatureResult.h"
-
 #import "MBCombinedRecognizerResult.h"
 #import "MBCombinedFullDocumentImageResult.h"
 #import "MBEncodedCombinedFullDocumentImageResult.h"
@@ -23,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
  * Class representing values obtained when scanning credit/debit cards
  */
 MB_CLASS_AVAILABLE_IOS(9.0)
-@interface MBCBlinkCardRecognizerResult : MBCRecognizerResult<NSCopying, MBCCombinedRecognizerResult, MBCDigitalSignatureResult>
+@interface MBCBlinkCardRecognizerResult : MBCRecognizerResult<NSCopying, MBCCombinedRecognizerResult>
 
 MB_INIT_UNAVAILABLE
 
